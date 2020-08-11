@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ToDo-other-version-test-/static/css/main.424edbec.chunk.css",
+    "main.js": "/ToDo-other-version-test-/static/js/main.10abee1e.chunk.js",
+    "main.js.map": "/ToDo-other-version-test-/static/js/main.10abee1e.chunk.js.map",
+    "runtime-main.js": "/ToDo-other-version-test-/static/js/runtime-main.dc5e24d8.js",
+    "runtime-main.js.map": "/ToDo-other-version-test-/static/js/runtime-main.dc5e24d8.js.map",
+    "static/js/2.c881ae52.chunk.js": "/ToDo-other-version-test-/static/js/2.c881ae52.chunk.js",
+    "static/js/2.c881ae52.chunk.js.map": "/ToDo-other-version-test-/static/js/2.c881ae52.chunk.js.map",
+    "index.html": "/ToDo-other-version-test-/index.html",
+    "precache-manifest.4056906119892bb3c864ec86451f1b21.js": "/ToDo-other-version-test-/precache-manifest.4056906119892bb3c864ec86451f1b21.js",
+    "service-worker.js": "/ToDo-other-version-test-/service-worker.js",
+    "static/css/main.424edbec.chunk.css.map": "/ToDo-other-version-test-/static/css/main.424edbec.chunk.css.map",
+    "static/js/2.c881ae52.chunk.js.LICENSE.txt": "/ToDo-other-version-test-/static/js/2.c881ae52.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc5e24d8.js",
+    "static/js/2.c881ae52.chunk.js",
+    "static/css/main.424edbec.chunk.css",
+    "static/js/main.10abee1e.chunk.js"
+  ]
+}
