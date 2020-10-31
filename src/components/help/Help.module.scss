@@ -1,0 +1,19 @@
+.info {
+  padding-top: 70px;
+  max-width: 1220px;
+  margin: 0 auto;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info__header {
+  padding-bottom: 35px;
+}
+.info__list {
+  padding-left: 50px;
+}
+.info__listItem {
+  padding-bottom: 15px;
+  list-style: none;
+}

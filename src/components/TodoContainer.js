@@ -1,94 +1,162 @@
 import React from "react";
 import TodoItem from "./TodoItem/TodoItem";
-import Header from "./Header";
 import InputToDo from "./InputToDO";
-import { v4 as uuidv4 } from "uuid";
-// class component
+// import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+import style from "./TodoContainer.scss";
 class TodoContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: [
-        {
-          id: uuidv4(),
-          title: "React lernen",
-          completed: false,
-        },
-        {
-          id: uuidv4(),
-          title: "JavaScript auffrischen (Klassen, usw.)",
-          completed: false,
-        },
-        {
-          id: uuidv4(),
-          title: "Props verstehen",
-          completed: false,
-        },
-      ],
+      todos: [],
+      todoListInput: "",
+      timeToGetBusy: false,
+      isLoading: false,
     };
   }
-  addToDo = (title) => {
-    let newArray = [...this.state.todos];
-    console.log(newArray);
+  componentDidMount() {
+    axios
+      //   .get("https://jsonplaceholder.typicode.com/todos", {
+      //   params: {
+      //     _limit: 15,
+      //   },
+      // });
 
-    newArray.push({
-      id: uuidv4(),
-      title: title,
-      completed: false,
-    });
+      .get("http://localhost:4000/todos/")
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          todos: response.data,
+        });
+      });
+  }
+  componentDidUpdate() {
+    console.log("Komponente ist fertig(componentDidUpdate)");
+    if (this.state.todos.length >= 7 && this.state.timeToGetBusy === false) {
+      this.setState({
+        timeToGetBusy: true,
+      });
+    } else if (
+      this.state.todos.length < 7 &&
+      this.state.timeToGetBusy === true
+    ) {
+      this.setState({
+        timeToGetBusy: false,
+      });
+    }
+  }
+  addToDo = (todo) => {
+    // let newArray = [...this.state.todos];
+    // console.log(newArray);
+
+    // newArray.push({
+    //   id: uuidv4(),
+    //   title: title,
+    //   completed: false,
+    // });
+    // this.setState({
+    //   todos: newArray,
+    // });
     this.setState({
-      todos: newArray,
+      isLoading: true,
     });
+    let title = todo;
+    axios
+      .post("http://localhost:4000/todos/", { title })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          todos: [...this.state.todos, res.data],
+          isLoading: false,
+          comment: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   onChangeCheckbox = (id) => {
-    const updateTodosArr = this.state.todos.map((todo) => {
-      if (todo.id === id) {
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    });
-    this.setState({
-      todos: updateTodosArr,
+    axios.put(`http://localhost:4000/todos/${id}`).then(() => {
+      const updateTodosArr = this.state.todos.map((todo) => {
+        console.log("change", todo);
+        if (todo._id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      });
+      this.setState({
+        todos: updateTodosArr,
+      });
     });
   };
   deleteToDoHandler = (id) => {
     console.log("delete item", id);
-    const updateTodos = this.state.todos.filter((item) => item.id !== id);
-
-    this.setState({
-      todos: updateTodos,
+    axios.delete(`http://localhost:4000/todos/${id}`).then(() => {
+      const updateTodos = this.state.todos.filter((item) => item._id !== id);
+      this.setState({
+        todos: updateTodos,
+      });
     });
   };
   render() {
+    const { todos } = this.state;
+    const actionTodos = todos.filter((todo) => !todo.completed);
+    const doneTodos = todos.filter((todo) => todo.completed);
+
+    console.log("Render Kommentare wird aufgerufen");
     return (
-      <div className="container">
-        <Header />
-        <InputToDo addToDo={this.addToDo} />
-        <ul>
-          {this.state.todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              completed={todo.completed}
-              handleChange={this.onChangeCheckbox}
-              deleteToDoHandler={this.deleteToDoHandler}
-            />
-          ))}
-        </ul>
-      </div>
+      <>
+        <div
+          className="container"
+          style={this.state.isLoading ? { opacity: 0.3 } : null}
+        >
+          {/* <Header timeToGetBusy={this.state.timeToGetBusy} /> */}
+          <div className="todo__count-div">
+            <div className="todo__count">
+              <span className="todo__count__span">{todos.length}</span>
+              <p>Total</p>
+            </div>
+            <div className="todo__count">
+              <span className="todo__count__span">{actionTodos.length}</span>
+              <p>To Do</p>
+            </div>
+            <div className="todo__count">
+              <span className="todo__count__span">{doneTodos.length}</span>
+              <p>Done</p>
+            </div>
+          </div>
+          <InputToDo addToDo={this.addToDo} />
+          {this.state.isLoading ? (
+            <p style={{ marginTop: "25px" }}>Loading...</p>
+          ) : null}
+          <ul>
+            {/* {this.state.todos.map((todo) => (
+              <TodoItem
+                key={todo._id}
+                id={todo._id}
+                title={todo.title}
+                completed={todo.completed}
+                handleChange={this.onChangeCheckbox}
+                deleteToDoHandler={this.deleteToDoHandler}
+              />
+            ))} */}
+            {[...actionTodos, ...doneTodos].map((todo) => (
+              <TodoItem
+                key={todo._id}
+                id={todo._id}
+                title={todo.title}
+                completed={todo.completed}
+                handleChange={this.onChangeCheckbox}
+                deleteToDoHandler={this.deleteToDoHandler}
+              />
+            ))}
+          </ul>
+        </div>
+        {/* <Footer /> */}
+      </>
     );
   }
 }
-
-// functional component
-const TodoContainerFunction = (props) => {
-  return (
-    <div>
-      <h1>Hi, ich bin der TodoContainer!</h1>
-      <p>{props.text}</p>
-    </div>
-  );
-};
 
 export default TodoContainer;

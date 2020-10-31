@@ -1,0 +1,18 @@
+.todo__count-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 7px;
+}
+.todo__count {
+  width: 33%;
+  background-color: #1d1c2e;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+}
+.todo__count p {
+  padding: 10px;
+}

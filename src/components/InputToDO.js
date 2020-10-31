@@ -1,50 +1,132 @@
-import React from "react";
+import React, { useState, Component, useEffect, useContext } from "react";
+import ThemeContext from "../context/ThemeContext";
 
-class InputToDO extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "",
-      correctLength: true,
-    };
-  }
-  onSubmitHandler = (e) => {
+const InputToDO = (props) => {
+  const [title, setTitle] = useState("");
+  const [correctLength, setCorrectLength] = useState(true);
+  const [correctWithoutAt, setCorrectWithoutAt] = useState(false);
+
+  const context = useContext(ThemeContext);
+
+  useEffect(() => {
+    console.log("Use Effect Func");
+  }, []);
+  const inputChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const onSubmitHandler = (e) => {
     e.preventDefault();
 
-    const { title } = this.state;
+    if (title.includes("@")) {
+      setCorrectWithoutAt(true);
+      return;
+    } else if (correctWithoutAt === true) {
+      setCorrectWithoutAt(false);
+    }
     if (title.length > 3 && title.length < 25) {
-      this.props.addToDo(title);
-      this.setState({
-        title: "",
-        correctLength: true,
-      });
+      props.addToDo(title);
+      setTitle("");
+      setCorrectLength(true);
     } else {
-      this.setState({ correctLength: false });
+      // incorrect length
+      setCorrectLength(false);
     }
   };
-  inputChange = (event) => {
-    this.setState({ title: event.target.value });
-  };
+  const isDark = context[0] === "dark" ? true : false;
+  const button = (
+    <input
+      type="submit"
+      value={isDark ? "add" : "+"}
+      className="input-submit"
+    />
+  );
+  return (
+    <>
+      <form action="" onSubmit={onSubmitHandler} className="form">
+        {isDark ? button : null}
+        <input
+          className="input-text"
+          type="text"
+          placeholder="add a task.."
+          value={title}
+          onChange={inputChange}
+        />
+        {/* <input
+          type="submit"
+          value={isDark ? "Mach hin" : "hinzufügen"}
+          className="input-submit"
+        /> */}
+        {isDark ? null : button}
+      </form>
+      {correctLength ? null : (
+        <p>Dein ToDo muss zwischen 3 und 25 Zeichen lang sein!</p>
+      )}
+      {correctWithoutAt ? <p>Please don’t use @ in your Todos!</p> : null}
+    </>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <form action="" onSubmit={this.onSubmitHandler} className="form">
-          <input
-            className="input-text"
-            type="text"
-            placeholder="Todo..."
-            value={this.state.title}
-            onChange={this.inputChange}
-          />
-          <input type="submit" className="input-submit" value="hinzufügen" />
-          {this.state.correctLength ? null : (
-            <p>Dein Todo muss zwischen 3 und 25 Zeichen lang sein</p>
-          )}
-        </form>
-      </div>
-    );
-  }
-}
+// class InputToDO extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       title: "",
+//       correctLength: true,
+//     };
+//   }
+//   onSubmitHandler = (e) => {
+//     e.preventDefault();
+
+//     const { title } = this.state;
+//     if (title.length > 3 && title.length < 25) {
+//       this.props.addToDo(title);
+//       this.setState({
+//         title: "",
+//         correctLength: true,
+//       });
+//     } else {
+//       this.setState({ correctLength: false });
+//     }
+//   };
+//   inputChange = (event) => {
+//     event.target.value.length > 3 && event.target.value.length < 25
+//       ? this.setState({
+//           title: event.target.value,
+//           correctLength: false,
+//         })
+//       : this.setState({
+//           title: event.target.value,
+//           correctLength: true,
+//         });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <form action="" onSubmit={this.onSubmitHandler} className="form">
+//           <input
+//             // className="input-text"
+//             className={`input-text ${
+//               this.state.correctLength ? "error__red" : "correct"
+//             }`}
+//             type="text"
+//             placeholder="Todo..."
+//             value={this.state.title}
+//             onChange={this.inputChange}
+//           />
+//           <input type="submit" className="input-submit" value="hinzufügen" />
+
+//           {/* <p
+//             className={` ${
+//               this.state.correctLength ? "error__red" : "correct"
+//             }`}
+//           >
+//             Dein Todo muss zwischen 3 und 25 Zeichen lang sein
+//           </p> */}
+//         </form>
+//       </div>
+//     );
+//   }
+// }
 
 export default InputToDO;

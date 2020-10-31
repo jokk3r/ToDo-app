@@ -1,0 +1,19 @@
+.table__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  color: black;
+  min-height: 400px;
+  padding-top: 60px;
+}
+.table {
+  width: 500px;
+}
+.table th,
+.table td {
+  text-align: left;
+  padding-left: 15px;
+  padding-top: 20px;
+  color: black;
+}
