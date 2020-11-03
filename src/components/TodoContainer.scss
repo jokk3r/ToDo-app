@@ -6,6 +6,16 @@
 }
 .todo__count {
   width: 33%;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  color: #141321;
+
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+}
+.todo__count__dark {
+  width: 33%;
   background-color: #1d1c2e;
   border-radius: 10px;
   color: #ffffff;
@@ -15,4 +25,41 @@
 }
 .todo__count p {
   padding: 10px;
+  font-size: 17px;
+}
+.todo__count__dark p {
+  padding: 10px;
+  font-size: 17px;
+}
+.todo__count__span {
+  font-size: 24px;
+}
+.container {
+  // max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #ffffff;
+}
+.container__dark {
+  // max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #141321;
+}
+
+@media (min-width: 525px) {
+  .container {
+    max-width: 525px;
+  }
+  .todo__count__dark {
+    max-width: 525px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+  .container__dark {
+    max-width: 1024px;
+  }
 }

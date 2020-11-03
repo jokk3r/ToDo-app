@@ -1,24 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,700&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #1f1f1f;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 .App {
   margin: 30px auto;
-  width: 700px;
-  border-radius: 25px;
+  // width: 700px;
+  // border-radius: 25px;
+  background-color: #ffffff;
   box-shadow: 0 3px 15px rgb(41, 39, 39);
-  overflow: hidden;
+
+  min-height: 100vh;
+}
+.App__dark {
+  margin: 30px auto;
+  // width: 700px;
+  // border-radius: 25px;
+  background-color: #141321;
+  box-shadow: 0 3px 15px rgb(41, 39, 39);
 }
 .container {
-  max-width: 700px;
+  // max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  background-color: #ffffff;
+  height: 100%;
+}
+.container__dark {
+  // max-width: 700px;
   margin: 0 auto;
   padding: 0 10px;
   background-color: #141321;

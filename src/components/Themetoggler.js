@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
-import sun from "./../img/sun_102839.png";
-import luna from "./../img/-night-scenery_89739.png";
+import moonBlack from "../img/moonBlack.png";
+import moonWhite from "../img/moonWhite.png";
 const styling = {
   cursor: "pointer",
-  width: "45px",
+  height: "21px",
+  width: "20px",
+  margin: "10px",
 };
 
 function Themetoggler(props) {
@@ -29,9 +31,19 @@ function Themetoggler(props) {
     // </button>
     <div>
       {isDark ? (
-        <img onClick={toggleThemeHandler} style={styling} src={sun} alt="" />
+        <img
+          onClick={toggleThemeHandler}
+          style={styling}
+          src={moonBlack}
+          alt=""
+        />
       ) : (
-        <img onClick={toggleThemeHandler} style={styling} src={luna} alt="" />
+        <img
+          onClick={toggleThemeHandler}
+          style={styling}
+          src={moonWhite}
+          alt=""
+        />
       )}
     </div>
   );

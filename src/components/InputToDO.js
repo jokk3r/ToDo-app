@@ -59,7 +59,7 @@ const InputToDO = (props) => {
         {isDark ? null : button}
       </form>
       {correctLength ? null : (
-        <p>Dein ToDo muss zwischen 3 und 25 Zeichen lang sein!</p>
+        <p>Your ToDo must be between 3 and 25 characters long!</p>
       )}
       {correctWithoutAt ? <p>Please don’t use @ in your Todos!</p> : null}
     </>

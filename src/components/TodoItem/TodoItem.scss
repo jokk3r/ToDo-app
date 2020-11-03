@@ -7,14 +7,20 @@
 .todo__item-name a {
   text-decoration: none;
   color: #ffffff;
+  font-size: 17px;
+  font-weight: 400;
 }
 .todo__item {
   list-style-type: none;
   padding: 17px 0px;
+  color: #141321;
+
   // border-bottom: 1px solid #eaeaea;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.todo__item__dark {
 }
 .todo__item-buttons {
   display: flex;
@@ -22,15 +28,15 @@
 .todo__item input {
   margin-right: 15px;
 }
-.todo__item button {
-  background: #d35e0f;
-  color: #fff;
-  border: 1px solid #d35e0f;
-  padding: 3px 7px;
-  cursor: pointer;
-  float: right;
-  outline: none;
-}
+// .todo__item button {
+//   background: #d35e0f;
+//   color: #fff;
+//   border: 1px solid #d35e0f;
+//   padding: 3px 7px;
+//   cursor: pointer;
+//   float: right;
+//   outline: none;
+// }
 .priority {
   margin-right: 30px;
 }

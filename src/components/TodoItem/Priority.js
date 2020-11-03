@@ -12,6 +12,7 @@ const whitePriorityStyle = {
   backgroundColor: "white",
   color: "#1774ff",
   border: "none",
+  width: "100%",
 };
 
 export class Priority extends Component {
@@ -21,7 +22,7 @@ export class Priority extends Component {
   }
   render() {
     const isDark = this.context[0] === "dark" ? true : false;
-    console.log(this.context);
+
     return (
       <select
         name="priority"
@@ -29,16 +30,16 @@ export class Priority extends Component {
         defaultValue={"DEFAULT"}
         onChange={this.props.onChangePriority}
         style={
-          this.context[0] === "dark" ? darkPriorityStyle : whitePriorityStyle
+          this.context[0] === "dark" ? whitePriorityStyle : darkPriorityStyle
         }
       >
-        <option disabled value="DEFAULT">
+        {/* <option disabled value="DEFAULT">
           select priority
-        </option>
+        </option> */}
 
-        <option value="high"> {isDark ? "Hurry up, moron" : "high"}</option>
-        <option value="middle">middle</option>
-        <option value="low">{isDark ? "low as hell" : "low"}</option>
+        <option value="normal">Normal</option>
+        <option value="high"> {isDark ? "High" : "Hurry up"}</option>
+        <option value="low">{isDark ? "Low" : "Leisurely"}</option>
       </select>
     );
   }

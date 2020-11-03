@@ -3,14 +3,24 @@ import "./TodoItem.scss";
 import Priority from "./Priority";
 import { Link } from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext";
-
+import deleteButtonWhite from "../../img/xWhite.png";
+import deleteButtonDark from "../../img/xDark.png";
 const darkButtonStyle = {
   backgroundColor: "#141321",
   border: "none",
+  cursor: "pointer",
+
+  // paddingRight: "10px",
 };
 const whiteButtonStyle = {
   backgroundColor: "#ffffff",
   border: "none",
+  // color: "#141321",
+  // paddingRight: "10px",
+  cursor: "pointer",
+};
+const white = {
+  color: "#141321",
 };
 const darkToUpperCase = {
   textTransform: "uppercase",
@@ -62,7 +72,7 @@ const TodoItem = (props) => {
         >
           <Link
             to={`/todo/${props.id}`}
-            style={isDark ? darkToUpperCase : null}
+            style={isDark ? white : darkToUpperCase}
           >
             {props.title}
           </Link>
@@ -74,10 +84,11 @@ const TodoItem = (props) => {
         </div>
         <button
           onClick={() => props.deleteToDoHandler(props.id)}
-          style={isDark ? darkButtonStyle : whiteButtonStyle}
+          style={isDark ? whiteButtonStyle : darkButtonStyle}
         >
           {/* {isDark ? "Destroy!" : "Delete"} */}
-          &#88;
+          {/* &#88; */}
+          <img src={isDark ? deleteButtonWhite : deleteButtonDark} alt="" />
         </button>
       </div>
       {/* <span>{context}</span> */}
