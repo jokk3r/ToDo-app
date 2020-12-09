@@ -42,10 +42,14 @@ const InputToDO = (props) => {
   );
   return (
     <>
-      <form action="" onSubmit={onSubmitHandler} className="form">
+      <form
+        action=""
+        onSubmit={onSubmitHandler}
+        className={isDark ? "form" : "form__dark"}
+      >
         {isDark ? button : null}
         <input
-          className="input-text"
+          className={isDark ? "input__text" : "input__text__dark"}
           type="text"
           placeholder="add a task.."
           value={title}

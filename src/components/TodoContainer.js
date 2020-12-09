@@ -238,29 +238,30 @@ const TodoContainer = (props) => {
 
   return (
     <>
-      <div
-        className={isDark ? "container" : "container__dark"}
-        style={isLoading ? { opacity: 0.3 } : null}
-      >
-        <div className="todo__count-div">
-          <div className={isDark ? "todo__count" : "todo__count__dark"}>
-            <span className="todo__count__span">{todos.length}</span>
-            <p>Total</p>
+      <div className={isDark ? "container__main" : "container__main__dark"}>
+        <div
+          className={isDark ? "container" : "container__dark"}
+          style={isLoading ? { opacity: 0.3 } : null}
+        >
+          <div className="todo__count-div">
+            <div className={isDark ? "todo__count" : "todo__count__dark"}>
+              <span className="todo__count__span">{todos.length}</span>
+              <p>Total</p>
+            </div>
+            <div className={isDark ? "todo__count" : "todo__count__dark"}>
+              <span className="todo__count__span">{actionTodos.length}</span>
+              <p>To Do</p>
+            </div>
+            <div className={isDark ? "todo__count" : "todo__count__dark"}>
+              <span className="todo__count__span">{doneTodos.length}</span>
+              <p>Done</p>
+            </div>
           </div>
-          <div className={isDark ? "todo__count" : "todo__count__dark"}>
-            <span className="todo__count__span">{actionTodos.length}</span>
-            <p>To Do</p>
-          </div>
-          <div className={isDark ? "todo__count" : "todo__count__dark"}>
-            <span className="todo__count__span">{doneTodos.length}</span>
-            <p>Done</p>
-          </div>
-        </div>
-        <Header timeToGetBusy={timeToGetBusy} />
-        <InputToDo addToDo={addToDo} />
-        {isLoading ? <p style={{ marginTop: "25px" }}>Loading...</p> : null}
-        <ul>
-          {/* {this.state.todos.map((todo) => (
+          <Header timeToGetBusy={timeToGetBusy} />
+          <InputToDo addToDo={addToDo} />
+          {isLoading ? <p style={{ marginTop: "25px" }}>Loading...</p> : null}
+          <ul>
+            {/* {this.state.todos.map((todo) => (
               <TodoItem
                 key={todo._id}
                 id={todo._id}
@@ -270,17 +271,18 @@ const TodoContainer = (props) => {
                 deleteToDoHandler={this.deleteToDoHandler}
               />
             ))} */}
-          {[...actionTodos, ...doneTodos].map((todo) => (
-            <TodoItem
-              key={todo._id}
-              id={todo._id}
-              title={todo.title}
-              completed={todo.completed}
-              handleChange={onChangeCheckbox}
-              deleteToDoHandler={deleteToDoHandler}
-            />
-          ))}
-        </ul>
+            {[...actionTodos, ...doneTodos].map((todo) => (
+              <TodoItem
+                key={todo._id}
+                id={todo._id}
+                title={todo.title}
+                completed={todo.completed}
+                handleChange={onChangeCheckbox}
+                deleteToDoHandler={deleteToDoHandler}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   );

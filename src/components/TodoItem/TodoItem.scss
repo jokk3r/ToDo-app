@@ -8,26 +8,26 @@
   text-decoration: none;
   color: #ffffff;
   font-size: 17px;
+  text-align: center;
   font-weight: 400;
 }
 .todo__item {
   list-style-type: none;
   padding: 17px 0px;
-  color: #141321;
-
-  // border-bottom: 1px solid #eaeaea;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.todo__item__dark {
+
+.checkbox {
+  margin-left: 18px;
+  margin-right: 3px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 .todo__item-buttons {
   display: flex;
 }
-.todo__item input {
-  margin-right: 15px;
-}
+
 // .todo__item button {
 //   background: #d35e0f;
 //   color: #fff;
@@ -38,8 +38,9 @@
 //   outline: none;
 // }
 .priority {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 .todo__item-delete {
   background-color: inherit;
+  margin-right: 15px;
 }

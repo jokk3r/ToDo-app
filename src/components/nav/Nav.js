@@ -14,7 +14,7 @@ const Nav = () => {
   const context = useContext(ThemeContext);
 
   const isDark = context[0] === "dark" ? true : false;
-
+  console.log(context);
   return (
     <nav className={isDark ? style.nav : style.nav__dark}>
       <NavLink exact to="/">

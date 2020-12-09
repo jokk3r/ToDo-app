@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import imgTodo from "../img/farbeBild.jpg";
-import imgTodoDark from "../img/darkBild.jpg";
 import ThemeContext from "../context/ThemeContext";
 
 const Header = ({ timeToGetBusy }) => {
@@ -11,6 +9,7 @@ const Header = ({ timeToGetBusy }) => {
     textAlign: "center",
     color: "#1774ff",
     fontSize: "20px",
+    paddingBottom: "7px",
   };
   return <>{timeToGetBusy ? <h2 style={hStyle}>Time to get busy</h2> : null}</>;
 };

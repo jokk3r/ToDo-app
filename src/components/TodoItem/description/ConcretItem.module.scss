@@ -1,15 +1,103 @@
+.description__main {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+.description__main__dark {
+  background-color: #141321;
+  min-height: 100vh;
+}
 .description__block {
-  padding: 15px;
   padding-top: 50px;
-  width: 650px;
+
   margin: 0 auto;
-  min-height: 400px;
+
+  &__dark {
+    padding-top: 50px;
+  }
 }
 .description__textarea {
-  padding: 10px;
   margin-top: 15px;
+  width: 100%;
+  background-color: inherit;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  resize: none;
+  padding: 10px;
+  margin: 5px;
+  &__dark {
+    margin-top: 15px;
+    width: 100%;
+    background-color: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    resize: none;
+    padding: 10px;
+    margin: 5px;
+    color: #ffffff;
+  }
 }
-b {
-  color: rgb(57, 71, 192);
-  text-transform: uppercase;
+.description__title {
+  color: #141321;
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-left: 15px;
+}
+.description__title__dark {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-left: 15px;
+}
+.description__buttons {
+  display: flex;
+  margin: 10px;
+}
+
+.description__button__done {
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: #1774ff;
+  color: #ffffff;
+  padding: 15px;
+  margin-right: 10px;
+}
+.description__button__cancel {
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: inherit;
+  color: #141321;
+  padding: 15px;
+
+  border: 2px solid rgba(20, 19, 33, 0.1);
+}
+.description__button__cancel__dark {
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: inherit;
+  color: #ffffff;
+
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+@media (min-width: 1024px) {
+  .description__block {
+    padding-top: 50px;
+    width: 40%;
+    margin: 0 auto;
+    &__dark {
+      padding-top: 50px;
+      width: 40%;
+      margin: 0 auto;
+    }
+  }
 }

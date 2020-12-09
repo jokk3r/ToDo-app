@@ -10,20 +10,22 @@ const darkButtonStyle = {
   border: "none",
   cursor: "pointer",
 
-  // paddingRight: "10px",
+  paddingRight: "10px",
 };
 const whiteButtonStyle = {
   backgroundColor: "#ffffff",
   border: "none",
   // color: "#141321",
-  // paddingRight: "10px",
+  paddingRight: "10px",
   cursor: "pointer",
 };
 const white = {
   color: "#141321",
+  marginLeft: "5px",
 };
 const darkToUpperCase = {
   textTransform: "uppercase",
+  marginLeft: "5px",
 };
 
 const TodoItem = (props) => {
@@ -49,6 +51,7 @@ const TodoItem = (props) => {
       <div>
         <input
           type="checkbox"
+          className="checkbox"
           checked={props.completed}
           onChange={() => props.handleChange(props.id)}
         ></input>
@@ -58,7 +61,8 @@ const TodoItem = (props) => {
               fontWeight: 800,
               color: "red",
               fontSize: "23px",
-              paddingRight: "10px",
+              marginLeft: "5px",
+              paddingRight: "4px",
             }}
           >
             !
