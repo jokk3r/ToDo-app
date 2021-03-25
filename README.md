@@ -1,3 +1,4 @@
+ToDo App is simple and awesome app to organize your tasks with very easy to use interface. ToDo can help you to make list of your tasks and also you can set Reminder with specific tasks.
 ![50ae2-clip-43kb](https://user-images.githubusercontent.com/50579748/112470580-1f3c6180-8d6b-11eb-8472-0540c8f7972d.png)
 ![7d468-clip-41kb](https://user-images.githubusercontent.com/50579748/112470991-9e319a00-8d6b-11eb-8aa5-4d24d6f6fdeb.png)
 ![243d5-clip-45kb](https://user-images.githubusercontent.com/50579748/112471011-a558a800-8d6b-11eb-98e1-5fc94e05e85e.png)
